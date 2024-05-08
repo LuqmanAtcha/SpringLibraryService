@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/styles.css}">
+<title>Insert title here</title>
+
+</head>
+	<body>
+		<div class="container">
+			<div class="redcontainer">
+				<div class="Center">
+					<h1>Add a new Book</h1>
+				</div>
+				<div class="Center">
+					<form method="post" th:action="@{/addBook}" th:object="${book}">
+						<input type="hidden" th:field="*{id}">
+							Title:<input type="text" th:field="*{title}"><br>
+							Author:<input type="text" th:field="*{author}"><br>
+						<input type="submit" value="Add Book!"><br>
+					</form><br>
+					</div>
+					<div class="Center">
+						<a th:href="@{/logout}">Logout</a><br>
+					</div>
+					<div class="Center">
+						<a th:href="@{/}">Back to Index</a><br>
+					</div>
+				</div>		
+		</div>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extra-springsecurity6">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/styles.css}">
+<title>Insert title here</title>
+
+</head>
+<body>
+	<div class="container">
+		<div class="redcontainer">
+			<div class="Center">
+				<h1>Reviews For: <span th:text="${book.getTitle()}"></span></h1><br>
+			</div>
+	<div class="Center">
+		<div th:if="${#lists.isEmpty(reviews)}">
+			<p>Currently no reviews! Be the first to leave a review!</p><br>
+		</div>
+	</div>
+		<div class="Center">
+			<table th:unless="${#lists.isEmpty(reviews)}"><br>
+				<tr th:each="r: ${reviews}">
+					<td th:text="${r.getText()}"></td>
+				</tr>
+			</table>
+	</div>
+	<br>
+		<div class="Center">
+			<div sec:authorize="!(isAuthenticated())">
+					Want to leave a review?<br> 
+			<div class="Center">
+				<a th:href="@{/login}">Login Here</a>
+			</div>
+		</div>
+		</div>
+		<div class="Center">
+			<div sec:authorize="hasRole('USER')">
+				Want to leave a review? <a th:href="@{/user/} + ${book.getId()}">Leave a Review</a><br>
+			</div>
+		</div>
+		<div class="Center">
+			<div sec:authorize="isAuthenticated()">
+				<a th:href="@{/logout}">Logout</a><br>
+			</div>
+		</div>
+		<div class="Center">
+			<a th:href="@{/}">Back to Index</a><br>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extra-springsecurity6">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/styles.css}">
+<title>Insert title here</title>
+<style>
+
+</style>
+</head>
+	<body>
+		<div class="container">
+			<div class="redcontainer">
+				<div class="Center">
+					<h1>Welcome to the Library Database</h1>
+				</div>
+				<div sec:authorize="isAuthenticated()">
+					
+				<div class="Center">
+					<h4>User: <span sec:authentication="name"></span></h4>
+				</div>
+				</div>
+				<div class="Center">
+				<table>
+					<tr>
+						<th>TITLE</th><th>AUTHOR</th><th>REVIEWS</th>
+					</tr>
+					<tr th:each="b: ${books}">
+						<td th:text="${b.title}"></td>
+							<td th:text="${b.author}"></td>
+							<td><a th:href="@{/bookReviews/}+${b.id}">VIEW</a></td>
+					</tr>
+				</table>
+				</div>
+				<div class="Center">
+					
+				<div sec:authorize="!(isAuthenticated())">
+					<a th:href="@{/login}">Login Here</a>
+				</div>
+				</div>
+				<div class="Center">
+					
+				<div sec:authorize="isAuthenticated()">
+					<a th:href="@{/logout}">Logout</a>
+				</div>
+				</div>
+				<div class="Center">
+					
+				<div sec:authorize="hasRole('ADMIN')">
+					<a th:href="@{/admin}">Add Book</a>
+				</div>
+				</div>
+			</body>
+		</html>

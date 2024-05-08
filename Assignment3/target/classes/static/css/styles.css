@@ -1,0 +1,32 @@
+@charset "ISO-8859-1";
+
+.error{
+	Color:red;
+}
+
+.logout{
+	Color:green;
+}
+		.container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		.redcontainer {
+			background-color: white;
+			padding: 20px;
+			border: 2px solid black;
+			border-radius: 10px;
+		}
+
+		.Center {
+			display: flex;
+			justify-content: center;
+			align-items: start;
+
+		}
+		body {
+  background-color: black;
+}

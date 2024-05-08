@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/styles.css}">
+<title>Insert title here</title>
+</head>
+	<body>
+		<div class="container">
+			<div class="redcontainer">
+				<div class="Center">
+					<h1>Leave a Review!</h1>
+				</div>
+				<form method="post" th:action="@{/addReview}" th:object="${Review}">
+				<div class="Center">
+					<input type="hidden" th:field="*{id}">
+				</div>
+				<div class="Center">
+					<input type="hidden" th:field="*{bookId}">
+				</div>
+				<div class="Center">
+					<textarea th:field="*{text}"></textarea><br>
+				</div>
+				<div class="Center">
+					<input type="submit" value="Add Review!">
+				</div>
+				</form><br>
+				<div class="Center">
+					<a th:href="@{/}">Back to Index</a><br>
+				</div>
+		</body>
+	</html>
